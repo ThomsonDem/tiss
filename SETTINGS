@@ -1,0 +1,494 @@
+ _______   _                                   _____            _       _   ____   ____ _______                    _    
+ |__   __| | |                                 / ____|          (_)     | | |  _ \ / __ \__   __|                  | |   
+    | | ___| | ___  __ _ _ __ __ _ _ __ ___   | (___   ___   ___ _  __ _| | | |_) | |  | | | |     _ __   __ _  ___| | __
+    | |/ _ \ |/ _ \/ _` | '__/ _` | '_ ` _ \   \___ \ / _ \ / __| |/ _` | | |  _ <| |  | | | |    | '_ \ / _` |/ __| |/ /
+    | |  __/ |  __/ (_| | | | (_| | | | | | |  ____) | (_) | (__| | (_| | | | |_) | |__| | | |    | |_) | (_| | (__|   < 
+    |_|\___|_|\___|\__, |_|  \__,_|_| |_| |_| |_____/ \___/ \___|_|\__,_|_| |____/ \____/  |_|    | .__/ \__,_|\___|_|\_\
+                    __/ |                                                                         | |                    
+                   |___/                                                                          |_|                    
+
+ 
+
+Languages: ITA/ENG/RUS(русский)
+
+
+
+
+ITA
+   
+
+Come configurare i bot: 
+
+1. Pre-requisiti
+
+    Python installato (consiglio una versione recente, 3.8 o superiore).
+    Un token del bot Telegram:
+        Vai su @BotFather su Telegram.
+        Crea un nuovo bot usando il comando /newbot e segui le istruzioni.
+        Alla fine, BotFather ti darà un token. 
+        Salvalo: è necessario per il tuo bot.
+
+2. Configura i file python
+
+    Sostituisci YOUR_BOT_TOKEN con il token del bot ottenuto da BotFather. [BOT_TOKEN =]
+    Sostituisci ID con il tuo id telegram. [AUTHORIZED_USERS =]
+
+3. Server
+
+ 3.1. Configurazione per Heroku
+
+    Per eseguire il bot su Heroku, devi configurare alcuni file specifici:
+    3.1. Crea un file requirements.txt
+
+    In questo file devi elencare le librerie necessarie. Ecco un esempio:
+
+    #flask
+    #pyTelegramBotAPI
+
+3.2. Crea un file Procfile
+
+   Heroku utilizza il Procfile per determinare come eseguire l'applicazione. Crea un file chiamato Procfile (senza estensione) e aggiungi questa riga:
+
+   #web: python bot.py
+
+3.3. Caricamento del bot su Heroku
+
+    Inizializza un repository Git:
+
+    Vai nella cartella del tuo progetto e inizializza un repository Git:
+
+    #git init
+    #git add .
+    #git commit -m "First commit"
+
+3.3. Collega il repository Git al tuo account Heroku:
+
+     Dopo esserti autenticato su Heroku, crea un'app su Heroku:
+
+     > heroku create
+
+     Heroku ti fornirà un URL, che sarà utilizzato come webhook per il bot. 
+     Ora collega il repository al tuo app Heroku:
+
+     #heroku git:remote -a nome-della-tua-app
+
+3.4. Carica il codice su Heroku:
+
+     Ora puoi caricare il codice su Heroku:
+
+     #git push heroku master
+
+3.5. Configura il Webhook:
+
+     Una volta che il bot è caricato, puoi configurare il webhook con il comando:
+
+     #heroku ps:restart
+
+     Questo riavvia il bot e imposta il webhook su Heroku.
+
+3.6. Test del Bot
+
+     Vai su Telegram e cerca il tuo bot usando il nome che hai scelto. 
+     Invia il comando /start o /help e dovresti ricevere una risposta dal bot.
+
+3.7. Manutenzione e Log
+
+     Puoi monitorare il log del tuo bot con questo comando:
+
+     #heroku logs --tail
+
+4.0. BOT Locale
+ 
+     Configura PyCharm
+
+     Apri progetto:
+        Apri PyCharm e seleziona Open.
+        Assicurati che l'interprete Python sia configurato.
+
+     Installa le librerie necessarie:
+        Apri il terminale di PyCharm (lo trovi in basso) e scrivi:
+
+        #pip install python-telegram-bot
+
+
+4.1. Esegui il bot
+
+     Premi il tasto destro sul file Python (telegram_bot.py) e seleziona Run.
+     PyCharm eseguirà il file, e il bot inizierà a funzionare.
+     Dovresti vedere nel terminale di PyCharm che il bot sta "ascoltando" i messaggi.
+
+
+
+ADVbot.py
+
+Come usarlo
+
+    Avvia il bot:
+        Esegui il codice e assicurati che il bot sia in esecuzione.
+
+    Aggiungi canali:
+        Usa /add_channel per aggiungere un canale.
+
+    Gestisci gruppi:
+        /list_channels per visualizzare l'elenco dei canali.
+        /remove_channel per rimuovere un canale
+
+
+multigroupmessage.py
+
+Come usarlo
+
+    Avvia il bot:
+        Esegui il codice e assicurati che il bot sia in esecuzione.
+
+    Aggiungi gruppi/canali:
+        Usa /add_group @nomegruppo per aggiungere un gruppo o canale alla lista.
+
+    Invia messaggi:
+        Usa /broadcast <messaggio> per inviare un messaggio a tutti i gruppi/canali nella lista.
+
+    Gestisci gruppi:
+        /list_groups per vedere la lista.
+        /remove_group @nomegruppo per rimuovere un gruppo.
+
+
+
+
+firewall.py
+
+Come usarlo
+
+    Avvia il bot:
+        Esegui il codice e assicurati che il bot sia in esecuzione.
+
+    Aggiungi admin:
+       /add_admin <user_id>: Aggiunge un nuovo admin.
+    
+    Aggiungi parola
+      /add_word <parola>: Aggiunge una parola vietata.
+
+    Aggiungere utente:
+       /allow_user <user_id>: Autorizza un utente a inviare file.
+
+    
+    
+Donazioni.py
+
+Come funziona:
+
+    - Quando un utente digita /start, il bot invierà un messaggio con un pulsante.
+    - Il pulsante reindirizza l'utente al tuo profilo Buy Me a Coffee per effettuare una donazione.
+
+
+Autotranslate.py
+
+     Comando /setlang:
+
+     Gli admin possono usare questo comando per impostare la lingua di destinazione.
+     Sintassi: /setlang [codice lingua] (esempio: /setlang en per inglese, /setlang it per italiano).
+
+     Codici Lingua:
+     Italiano	it
+     Inglese	en
+     Francese	fr
+     Tedesco	de
+     Spagnolo	es
+     Portoghese	pt
+     Russo	ru
+
+
+
+
+Eng
+
+How to configure bots:
+
+     Pre-requisites
+     Python installed (a recent version, 3.8 or higher is recommended).
+     A Telegram bot token:
+                         Go to @BotFather on Telegram.
+                         Create a new bot using the /newbot command and follow the instructions.
+                         At the end, BotFather will give you a token.
+                         Save it: it is required for your bot.
+
+      Configure the Python files
+        Replace YOUR_BOT_TOKEN with the bot token obtained from BotFather. [BOT_TOKEN =]
+        Replace ID with your Telegram ID. [AUTHORIZED_USERS =]
+
+3.  Server
+
+3.1.  Configuration for Heroku
+      To run the bot on Heroku, you need to configure specific files:
+      Create a requirements.txt file
+      In this file, list the necessary libraries. Example:
+
+      #flask
+      #pyTelegramBotAPI
+
+3.2.  Create a Procfile
+      Heroku uses the Procfile to determine how to run the application. 
+      Create a file called Procfile (no extension) and add this line:
+
+      #web: python bot.py
+
+3.3.  Upload the bot to Heroku
+
+      Initialize a Git repository:
+
+      #git init
+      #git add .
+      #git commit -m "First commit"
+
+      Link the Git repository to your Heroku account:
+      After logging into Heroku, create an app on Heroku:
+
+      #heroku create
+
+      Heroku will provide a URL to be used as the webhook for the bot.
+      Now link the repository to your Heroku app:
+
+      #heroku git:remote -a your-app-name
+
+      Upload the code to Heroku:
+
+      #git push heroku master
+
+3.4.  Configure the webhook:
+      Once the bot is uploaded, set the webhook with this command:
+
+      #heroku ps:restart
+
+      This restarts the bot and sets the webhook on Heroku.
+
+3.5.  Test the Bot
+
+      Go to Telegram and search for your bot using the name you chose.
+      Send the /start or /help command, and you should receive a response from the bot.
+
+3.6.  Maintenance and Logs
+
+      Monitor the bot logs with this command:
+
+      #heroku logs --tail
+
+4.0.  Local Bot
+
+4.1.  Configure PyCharm
+      Open project:
+      Open PyCharm and select Open.
+      Make sure the Python interpreter is configured.
+      Install the necessary libraries:
+      Open PyCharm's terminal (found at the bottom) and type:
+
+      #pip install python-telegram-bot
+
+4.2.  Run the bot
+      Right-click on the Python file (e.g., telegram_bot.py) and select Run.
+      PyCharm will execute the file, and the bot will start working. 
+      You should see in PyCharm's terminal that the bot is "listening" to messages.
+
+ADVbot.py
+How to use it
+
+    Start the bot:
+    Run the code and ensure the bot is running.
+    Add channels:
+    Use /add_channel to add a channel.
+    Manage groups:
+        /list_channels to view the list of channels.
+        /remove_channel to remove a channel.
+
+multigroupmessage.py
+How to use it
+
+    Start the bot:
+    Run the code and ensure the bot is running.
+    Add groups/channels:
+    Use /add_group @groupname to add a group or channel to the list.
+    Send messages:
+    Use /broadcast <message> to send a message to all groups/channels in the list.
+    Manage groups:
+        /list_groups to view the list.
+        /remove_group @groupname to remove a group.
+
+firewall.py
+How to use it
+
+    Start the bot:
+    Run the code and ensure the bot is running.
+    Add admins:
+    Use /add_admin <user_id> to add a new admin.
+    Add prohibited words:
+    Use /add_word <word> to add a banned word.
+    Add users:
+    Use /allow_user <user_id> to authorize a user to send files.
+
+Donations.py
+How it works
+
+    When a user types /start, the bot will send a message with a button.
+    The button redirects the user to your Buy Me a Coffee profile to make a donation.
+
+Autotranslate.py
+
+    Command /setlang:
+    Admins can use this command to set the target language.
+    Syntax: /setlang [language code] (e.g., /setlang en for English, /setlang it for Italian).
+
+Language Codes:
+
+    Italian:    it
+    English:    en
+    French:     fr
+    German:     de
+    Spanish:    es
+    Portuguese: pt
+    Russian:    ru
+
+
+
+Russian
+ 
+Как настроить ботов:
+
+    Предварительные требования
+        Установленный Python (рекомендуется версия 3.8 или выше).
+        Токен Telegram-бота:
+            Откройте @BotFather в Telegram.
+            Создайте нового бота с помощью команды /newbot и следуйте инструкциям.
+            В конце BotFather предоставит вам токен.
+            Сохраните его: он нужен для работы бота.
+
+    Настройка Python-файлов
+        Замените YOUR_BOT_TOKEN на токен, полученный от BotFather. [BOT_TOKEN =]
+        Замените ID на ваш Telegram ID. [AUTHORIZED_USERS =]
+
+    Сервер
+
+    Настройка для Heroku
+    Чтобы запустить бота на Heroku, настройте несколько файлов:
+
+        Создайте файл requirements.txt
+        В этом файле укажите необходимые библиотеки. Пример:
+
+flask
+pyTelegramBotAPI
+
+Создайте файл Procfile
+Heroku использует файл Procfile, чтобы определить, как запускать приложение. Создайте файл с именем Procfile (без расширения) и добавьте строку:
+
+web: python bot.py
+
+Загрузите бота на Heroku
+
+    Инициализируйте репозиторий Git:
+
+git init
+git add .
+git commit -m "First commit"
+
+Свяжите репозиторий Git с вашим аккаунтом Heroku:
+После входа в Heroku создайте приложение:
+
+heroku create
+
+Heroku предоставит URL, который будет использоваться как вебхук для бота. Теперь свяжите репозиторий с приложением Heroku:
+
+heroku git:remote -a your-app-name
+
+Загрузите код на Heroku:
+
+git push heroku master
+
+Настройте вебхук:
+После загрузки бота выполните команду для настройки вебхука:
+
+        heroku ps:restart
+
+        Это перезапустит бота и установит вебхук на Heroku.
+
+    Тестирование бота
+
+    Найдите вашего бота в Telegram по имени, которое вы указали.
+    Отправьте команду /start или /help, и вы должны получить ответ от бота.
+
+    Обслуживание и логи
+
+    Просматривайте логи бота с помощью команды:
+
+    heroku logs --tail
+
+Локальный бот
+
+    Настройка PyCharm
+        Откройте проект:
+        Откройте PyCharm и выберите Open.
+        Убедитесь, что интерпретатор Python настроен.
+        Установите необходимые библиотеки:
+        В терминале PyCharm (внизу) введите:
+
+    pip install python-telegram-bot
+
+Запустите бота
+
+    Щелкните правой кнопкой мыши на файле Python (например, telegram_bot.py) и выберите Run.
+    PyCharm выполнит файл, и бот начнет работу. В терминале PyCharm вы должны увидеть, что бот "слушает" сообщения.
+
+
+ADVbot.py
+Как использовать
+
+    Запустите бота:
+    Запустите код и убедитесь, что бот работает.
+    Добавьте каналы:
+    Используйте команду /add_channel, чтобы добавить канал.
+    Управляйте группами:
+        /list_channels, чтобы увидеть список каналов.
+        /remove_channel, чтобы удалить канал.
+
+multigroupmessage.py
+Как использовать
+
+    Запустите бота:
+    Запустите код и убедитесь, что бот работает.
+    Добавьте группы/каналы:
+    Используйте /add_group @имягруппы, чтобы добавить группу или канал в список.
+    Отправляйте сообщения:
+    Используйте /broadcast <сообщение>, чтобы отправить сообщение всем группам/каналам в списке.
+    Управляйте группами:
+        /list_groups, чтобы увидеть список.
+        /remove_group @имягруппы, чтобы удалить группу.
+
+firewall.py
+Как использовать
+
+    Запустите бота:
+    Запустите код и убедитесь, что бот работает.
+    Добавьте админов:
+    Используйте /add_admin <user_id>, чтобы добавить нового админа.
+    Добавьте запрещенные слова:
+    Используйте /add_word <слово>, чтобы добавить запрещенное слово.
+    Добавьте пользователей:
+    Используйте /allow_user <user_id>, чтобы разрешить пользователю отправлять файлы.
+
+Donations.py
+Как это работает
+
+    Когда пользователь вводит /start, бот отправляет сообщение с кнопкой.
+    Кнопка перенаправляет пользователя на ваш профиль Buy Me a Coffee для пожертвований.
+
+Autotranslate.py
+
+    Команда /setlang:
+    Админы могут использовать эту команду, чтобы установить язык перевода.
+    Синтаксис: /setlang [код языка] (например, /setlang en для английского, /setlang it для итальянского).
+
+Коды языков:
+
+    Итальянский: it
+    Английский: en
+    Французский: fr
+    Немецкий: de
+    Испанский: es
+    Португальский: pt
+    Русский: ru
