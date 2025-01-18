@@ -3,13 +3,13 @@ from telegram import Update
 from telegram.ext import ContextTypes
 
 # Token del bot
-BOT_TOKEN = "7888062782:AAH6pzhbgklXnpJrgzsHfpkpkNYkyHTy38k"
+BOT_TOKEN = "BOT TOKEN"
 
 # Lista degli admin autorizzati (sostituisci con i tuoi ID Telegram)
-AUTHORIZED_USERS = [457274768]  # Inserisci il tuo ID o quello degli admin autorizzati
+AUTHORIZED_USERS = [ID]  # Inserisci il tuo ID o quello degli admin autorizzati
 
 # Lista dei canali o gruppi dove inviare i messaggi
-GROUPS = ["@caccamagica", "@magicacacca"]  # Modifica con i tuoi gruppi/canali
+GROUPS = ["@test", "@test"]  # Modifica con i tuoi gruppi/canali
 
 
 # Verifica se l'utente è autorizzato
@@ -60,7 +60,7 @@ async def add_group(update: Update, context: ContextTypes.DEFAULT_TYPE):
         await update.message.reply_text(f"Il gruppo {group} è già nella lista.")
 
 
-# Rimuovi un gruppo dalla lista
+
 async def remove_group(update: Update, context: ContextTypes.DEFAULT_TYPE):
     user_id = update.effective_user.id
     if not is_authorized(user_id):
@@ -79,7 +79,7 @@ async def remove_group(update: Update, context: ContextTypes.DEFAULT_TYPE):
         await update.message.reply_text(f"Il gruppo {group} non è nella lista.")
 
 
-# Lista dei gruppi
+
 async def list_groups(update: Update, context: ContextTypes.DEFAULT_TYPE):
     user_id = update.effective_user.id
     if not is_authorized(user_id):
@@ -93,18 +93,18 @@ async def list_groups(update: Update, context: ContextTypes.DEFAULT_TYPE):
         await update.message.reply_text("Non ci sono gruppi nella lista.")
 
 
-# Funzione principale
+
 def main():
-    # Crea l'applicazione del bot
+   
     application = Application.builder().token(BOT_TOKEN).build()
 
-    # Aggiungi i comandi al bot
+    
     application.add_handler(CommandHandler("broadcast", broadcast))
     application.add_handler(CommandHandler("add_group", add_group))
     application.add_handler(CommandHandler("remove_group", remove_group))
     application.add_handler(CommandHandler("list_groups", list_groups))
 
-    # Avvia il bot
+   
     print("Bot in esecuzione... Premi Ctrl+C per fermarlo.")
     application.run_polling()
 
