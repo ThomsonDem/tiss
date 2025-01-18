@@ -10,15 +10,15 @@ forbidden_words = ["parola1", "parola2"]  # Lista parole vietate
 allowed_users = []  # Lista di utenti autorizzati a inviare file
 pending_users = {}  # Per la gestione CAPTCHA dei nuovi utenti
 
-# Funzione per verificare se l'utente è admin
+
 def is_admin(user_id):
     return user_id in admins
 
-# Comando /start
+
 def start(update: Update, context: CallbackContext):
     update.message.reply_text("Ciao! Sono il bot di gestione del gruppo.")
 
-# Gestione parole vietate
+
 def check_message(update: Update, context: CallbackContext):
     for word in forbidden_words:
         if word in update.message.text.lower():
@@ -31,13 +31,13 @@ def check_message(update: Update, context: CallbackContext):
             update.message.reply_text(f"Messaggio vietato! {update.message.from_user.first_name} è stato mutato.")
             return
 
-# Gestione file (solo utenti autorizzati)
+
 def handle_files(update: Update, context: CallbackContext):
     if update.message.from_user.id not in allowed_users and not is_admin(update.message.from_user.id):
         update.message.delete()
         update.message.reply_text("Non sei autorizzato a inviare file!")
 
-# Verifica CAPTCHA per nuovi utenti
+
 def new_member(update: Update, context: CallbackContext):
     for member in update.message.new_chat_members:
         keyboard = [
@@ -87,7 +87,7 @@ def add_admin(update: Update, context: CallbackContext):
     else:
         update.message.reply_text("Non hai i permessi per eseguire questo comando.")
 
-# Comando /add_word per aggiungere parole vietate
+
 def add_word(update: Update, context: CallbackContext):
     if is_admin(update.message.from_user.id):
         try:
@@ -102,7 +102,7 @@ def add_word(update: Update, context: CallbackContext):
     else:
         update.message.reply_text("Non hai i permessi per eseguire questo comando.")
 
-# Comando /allow_user per autorizzare utenti a inviare file
+
 def allow_user(update: Update, context: CallbackContext):
     if is_admin(update.message.from_user.id):
         try:
@@ -117,24 +117,24 @@ def allow_user(update: Update, context: CallbackContext):
     else:
         update.message.reply_text("Non hai i permessi per eseguire questo comando.")
 
-# Configurazione principale del bot
+
 def main():
     updater = Updater(BOT_TOKEN, use_context=True)
     dp = updater.dispatcher
 
-    # Comandi
+  
     dp.add_handler(CommandHandler("start", start))
     dp.add_handler(CommandHandler("add_admin", add_admin, pass_args=True))
     dp.add_handler(CommandHandler("add_word", add_word, pass_args=True))
     dp.add_handler(CommandHandler("allow_user", allow_user, pass_args=True))
 
-    # Gestione messaggi
+   
     dp.add_handler(MessageHandler(Filters.text & ~Filters.command, check_message))
     dp.add_handler(MessageHandler(Filters.document, handle_files))
     dp.add_handler(MessageHandler(Filters.status_update.new_chat_members, new_member))
     dp.add_handler(CallbackQueryHandler(verify_user))
 
-    # Avvio del bot
+  
     updater.start_polling()
     updater.idle()
 
