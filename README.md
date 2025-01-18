@@ -5,7 +5,9 @@
 
 ## Descrizione
 
-**Tiss** è un pacchetto per bot Telegram che consente una gestione avanzata di canali e gruppi. Il progetto fornisce strumenti per l'invio di messaggi multipli, traduzione automatica, gestione di firewall, e supporto alle donazioni.
+**Tiss** è un pacchetto per bot Telegram che consente una gestione avanzata di canali e gruppi. Il progetto fornisce strumenti per l'invio di messaggi multipli, traduzione automatica, gestione di firewall e supporto alle donazioni.
+
+🌟 **Unisciti al nostro canale Telegram per aggiornamenti e supporto:** [Tiss Telegram Channel](https://t.me/tisstelegram)
 
 ---
 
@@ -96,4 +98,5 @@ Questo progetto è distribuito sotto la licenza MIT. Vedi il file [LICENSE](LICE
 
 ## Contatti
 
+🌟 **Canale ufficiale Telegram:** [Tiss Telegram Channel](https://t.me/tisstelegram)  
 Per qualsiasi domanda o supporto, contatta il creatore del progetto su Telegram.
